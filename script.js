@@ -11,35 +11,6 @@ const tasks = [
   { title: "Assistir a um documentário interessante", type: "Normal" },
 ];
 
-
-createTaskItem = (task, i) => {
-  const list = document.createElement("li");
-  const div = document.createElement("div");
-  const urgencyLevel = document.createElement("span");
-  const taskTitle = document.createElement("p");
-  const button = document.createElement("button");
-  
-  list.classList.add("task__item");
-  div.classList.add("task-info__container");
-  urgencyLevel.classList.add("task-type");
-  taskTitle.innerText = task.title;
-  button.classList.add("task__button--remove-task");
-  
-  if (task.type.toLowerCase() === "urgente") {
-    urgencyLevel.classList.add("span-urgent");
-  }
-  if (task.type.toLowerCase() === "importante") {
-    urgencyLevel.classList.add("span-important");
-  }
-  if (task.type.toLowerCase() === "normal") {
-    urgencyLevel.classList.add("span-normal");
-  }
-  
-  list.append(div, button);
-  div.append(urgencyLevel, taskTitle);
-  return list;
-};
-
 renderElements = (arr) => {
   const TaskUl = document.querySelector(".tasks__list");
   TaskUl.innerHTML = "";
@@ -51,3 +22,60 @@ renderElements = (arr) => {
 };
 
 renderElements(tasks);
+
+createTaskItem = (task, i) => {
+  const list = document.createElement("li");
+  const div = document.createElement("div");
+  const urgencyLevel = document.createElement("span");
+  const taskTitle = document.createElement("p");
+  const button = document.createElement("button");
+
+  list.classList.add("task__item");
+  div.classList.add("task-info__container");
+  urgencyLevel.classList.add("task-type");
+  taskTitle.innerText = task.title;
+  button.classList.add("task__button--remove-task");
+
+  if (task.type.toLowerCase() === "urgente") {
+    urgencyLevel.classList.add("span-urgent");
+  }
+  if (task.type.toLowerCase() === "importante") {
+    urgencyLevel.classList.add("span-important");
+  }
+  if (task.type.toLowerCase() === "normal") {
+    urgencyLevel.classList.add("span-normal");
+  }
+
+  list.append(div, button);
+  div.append(urgencyLevel, taskTitle);
+  button,
+    addEventListener("click", function () {
+      tasks.splice(i, 1);
+      renderElements(tasks);
+    });
+  return list;
+};
+
+addNewTask = () => {
+  const buttonAddTask = document.querySelector(".form__button--add-task");
+
+  buttonAddTask.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    const titleTask = document.querySelector(".form__input--text");
+    const urgency = document.querySelector(".form__input--priority");
+
+    const newTask = {
+      title: titleTask.value,
+      title: urgency.value,
+    };
+
+    if (titleTask.value.lenght == 0 || urgency.value.lenght == 0) {
+      alert("Algum campo ficou vazio.");
+    }
+    tasks.push(newTask);
+    renderElements(tasks);
+  });
+};
+
+addNewTask();
