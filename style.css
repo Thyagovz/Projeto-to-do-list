@@ -1,0 +1,146 @@
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #e2e2e2;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.header__title {
+  font-size: 25px;
+  color: #3b5bdb;
+  margin: 10px;
+  margin-left: 8%;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.header__container {
+  width: 100%;
+  background-color: #fff;
+}
+.header__input--search {
+  width: 50%;
+  margin-right: 7.5%;
+}
+
+.header__content {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px;
+}
+
+.main__container {
+  background-color: #e2e2e2;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+}
+
+.form__container {
+  width: 100%;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.form__title {
+  font-size: 25px;
+  padding-bottom: 30px;
+}
+
+.form__input-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input__box {
+  font-size: 15px;
+  border-radius: 5px;
+  border: none;
+  background-color: #ebebeb;
+  padding: 15px;
+}
+
+.form__input--text {
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.form__input--priority {
+  width: 40%;
+  margin-bottom: 10px;
+  color: #797979;
+}
+
+.form__button--add-task {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: #3b5bdb;
+  color: #fff;
+  cursor: pointer;
+}
+
+h2 {
+  font-size: 25px;
+  padding-bottom: 20px;
+}
+
+.tasks__container {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.tasks__list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.task__item {
+  background-color: #f1f3f5;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 15px;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.task-info__container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.task__button--remove-task {
+  background-image: url(./assets/trash-icon.svg);
+  background-repeat: no-repeat;
+  height: 20px;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.task-type {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.span-urgent {
+  background-color: #e40404;
+}
+
+.span-important {
+  background-color: #f3a703;
+}
+
+.span-normal {
+  background-color: #028302;
+}
