@@ -23,3 +23,5 @@ No entanto, o código ainda precisa ser atualizado com a estilização e a inter
 - Evento "Adicionar Tarefa"
 
 - Evento "Remover Tarefa"
+
+- ! O campo para Pesquisar Tarefa não foi o foco da tarefa e está posicionado somente para efeitos de estilização.

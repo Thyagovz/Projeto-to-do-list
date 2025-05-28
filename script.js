@@ -11,19 +11,7 @@ const tasks = [
   { title: "Assistir a um documentário interessante", type: "Normal" },
 ];
 
-renderElements = (arr) => {
-  const TaskUl = document.querySelector(".tasks__list");
-  TaskUl.innerHTML = "";
-  for (let i = 0; i < arr.length; i++) {
-    const tasks = arr[i];
-    const taskItem = createTaskItem(tasks, i);
-    TaskUl.appendChild(taskItem);
-  }
-};
-
-renderElements(tasks);
-
-createTaskItem = (task, i) => {
+const createTaskItem = (task, i) => {
   const list = document.createElement("li");
   const div = document.createElement("div");
   const urgencyLevel = document.createElement("span");
@@ -48,15 +36,26 @@ createTaskItem = (task, i) => {
 
   list.append(div, button);
   div.append(urgencyLevel, taskTitle);
-  button,
-    addEventListener("click", function () {
-      tasks.splice(i, 1);
-      renderElements(tasks);
-    });
+
+  button.addEventListener("click", function () {
+    tasks.splice(i, 1);
+    renderElements(tasks);
+  });
+
   return list;
 };
 
-addNewTask = () => {
+const renderElements = (arr) => {
+  const taskUl = document.querySelector(".tasks__list");
+  taskUl.innerHTML = "";
+
+  for (let i = 0; i < arr.length; i++) {
+    const taskItem = createTaskItem(arr[i], i);
+    taskUl.appendChild(taskItem);
+  }
+};
+
+const addNewTask = () => {
   const buttonAddTask = document.querySelector(".form__button--add-task");
 
   buttonAddTask.addEventListener("click", function (event) {
@@ -65,17 +64,23 @@ addNewTask = () => {
     const titleTask = document.querySelector(".form__input--text");
     const urgency = document.querySelector(".form__input--priority");
 
+    if (titleTask.value.length === 0 || urgency.value.length === 0) {
+      alert("Algum campo ficou vazio.");
+      return;
+    }
+
     const newTask = {
       title: titleTask.value,
-      title: urgency.value,
+      type: urgency.value,
     };
 
-    if (titleTask.value.lenght == 0 || urgency.value.lenght == 0) {
-      alert("Algum campo ficou vazio.");
-    }
     tasks.push(newTask);
     renderElements(tasks);
+
+    titleTask.value = "";
+    urgency.value = "";
   });
 };
 
 addNewTask();
+renderElements(tasks);
